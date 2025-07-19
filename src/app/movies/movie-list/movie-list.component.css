@@ -1,0 +1,179 @@
+.movies-list-wrapper {
+  max-width: 900px;
+  margin: 48px auto;
+  padding: 2rem;
+  background: var(--card-bg, #fff);
+  border-radius: 20px;
+  box-shadow: 0 4px 24px #e6e1fa;
+}
+
+.movie-title {
+  font-size: 2rem;
+  color: var(--violet-main, #6c16a6);
+  font-weight: 700;
+  margin-bottom: 1.4rem;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.add-movie-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7em;
+  margin-bottom: 1.5em;
+  padding: 1em;
+  background: #f9f8fe;
+  border-radius: 9px;
+  align-items: center;
+}
+.add-movie-form input,
+.add-movie-form textarea {
+  font-size: 1em;
+  padding: 7px 10px;
+  border-radius: 5px;
+  border: 1px solid #c3bfee;
+}
+.add-movie-form textarea {
+  min-width: 160px;
+  min-height: 32px;
+  resize: vertical;
+}
+.add-btn {
+  background: var(--accent, #c16aec);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+  padding: 7px 20px;
+  cursor: pointer;
+}
+.form-error {
+  color: #b71c1c;
+  margin-left: 8px;
+}
+.form-success {
+  color: #1b7c35;
+  margin-left: 8px;
+}
+
+.search-section {
+  margin: 1em 0 2em 0;
+}
+
+.search-bar {
+  width: 70%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #c8befc;
+  margin: 0 8px 1.2rem 0;
+  font-size: 1rem;
+}
+.search-btn {
+  background: var(--accent, #c16aec);
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 8px 18px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 18px;
+}
+.loader { color: var(--violet-main, #6c16a6); font-weight: 500; margin: 32px 0; text-align: center; }
+.error { color: #b71c1c; background: #faeafd; border-radius: 8px; padding: 10px; margin-bottom: 16px; text-align: center; }
+.movies-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.movie-card {
+  min-width: 240px;
+  width: 260px;       /* <-- more room */
+  min-height: 320px;  /* <-- enough height for buttons */
+  background: var(--violet-light, #f5f2fd);
+  color: var(--text-main, #3d116a);
+  text-decoration: none;
+  border-radius: 12px;
+  padding: 18px 14px 22px 14px; /* make sure there's bottom space */
+  box-shadow: 0 2px 8px #e2dcfa;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: relative;           /* allow absolute button positioning if needed */
+  overflow: visible;            /* allow children to overflow */
+  transition: box-shadow 0.2s, transform 0.12s;
+}
+
+.movie-card:hover { box-shadow: 0 8px 20px #d1b4fa; background: #f8f3ff; transform: translateY(-4px) scale(1.03); }
+.movie-title-card { font-size: 1.13rem; font-weight: 700; color: var(--violet-main, #6c16a6); margin-bottom: 2px; }
+.movie-genre { color: var(--accent, #c16aec); background: #f0d4ff; border-radius: 7px; font-size: 0.95rem; margin-bottom: 6px; padding: 0 9px; }
+.movie-desc { font-size: 0.97rem; margin-bottom: 12px; }
+.movie-duration { font-size: 0.91rem; color: #7c17b3; margin-top: auto; }
+.actions {
+  margin-top: 12px;
+  width: 100%;
+  display: flex;
+  gap: 11px;
+  justify-content: flex-end;
+}
+
+.delete-btn {
+  background: #efbcc6;
+  color: #a11c38;
+  font-size: 1.11em;
+  border: none;
+  border-radius: 6px;
+  padding: 3px 10px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.delete-btn:hover { background: #f9375e; color: #fff; }
+.add-movie-form input,
+.add-movie-form textarea {
+  font-size: 1em;
+  padding: 7px 10px;
+  border-radius: 5px;
+  border: 1px solid #c3bfee;
+  margin-bottom: 6px;
+}
+.movie-date, .movie-lang {
+  font-size: 0.92rem;
+  color: #2b0765;
+  margin-top: 2px;
+}
+.edit-btn {
+  background: #c8eafd;
+  color: #165dad;
+  font-size: 1.11em;
+  border: none;
+  border-radius: 6px;
+  padding: 3px 10px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.edit-btn:hover { background: #188ae2; color: #fff; }
+dialog[open] {
+  padding: 2em;
+  max-width: 330px;
+  border-radius: 16px;
+  border: 0 none;
+  box-shadow: 0 6px 60px #745afc34;
+  z-index: 1000;
+}
+.dialog-form input, .dialog-form textarea {
+  width: 100%;
+  margin-bottom: 1em;
+  padding: 7px 10px;
+  border-radius: 6px;
+  border: 1px solid #dacbfc;
+  font-size: 1em;
+  box-sizing: border-box;
+}
+.dialog-form .actions {
+  display: flex;
+  gap: 1em;
+}

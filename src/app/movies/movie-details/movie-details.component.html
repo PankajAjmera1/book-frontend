@@ -1,0 +1,24 @@
+<div class="movie-details-wrapper">
+  @if (loading()) {
+    <div class="loader">Loading...</div>
+  } @else {
+    @if (error()) {
+      <div class="error">{{ error() }}</div>
+    } @else if (movie()) {
+      <div class="movie-details-card">
+        <div class="movie-details-title">{{ movie()!.movieName }}</div>
+        <div class="movie-details-genre">{{ movie()!.genre }}</div>
+        <div class="movie-details-desc">{{ movie()!.description }}</div>
+        <div class="movie-details-duration">
+          <b>Duration:</b> {{ movie()!.durationMinutes }} min
+        </div>
+        <div class="movie-details-release">
+          <b>Release:</b> {{ movie()!.releaseDate }}
+        </div>
+        <div class="movie-details-lang">
+          <b>Language:</b> {{ movie()!.language }}
+        </div>
+      </div>
+    }
+  }
+</div>
