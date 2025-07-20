@@ -1,0 +1,39 @@
+.theaters-list-wrapper {
+  max-width: 900px;
+  margin: 48px auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 20px;
+}
+.theaters-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+.theater-card {
+  width: 270px;
+  background: #f5f2fd;
+  color: #3d116a;
+  border-radius: 12px;
+  padding: 18px 14px;
+  box-shadow: 0 2px 8px #e2dcfa;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 175px;
+}
+.assign-movie-section input {
+  width: 80px;
+  margin-right: 6px;
+}
+.assign-movie-btn {
+  background: #c16aec;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 4px 14px;
+  cursor: pointer;
+  font-size: 1em;
+}
+.no-movie { color: #a34f4f; font-style: italic; }

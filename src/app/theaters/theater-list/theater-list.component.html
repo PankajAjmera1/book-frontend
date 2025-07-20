@@ -1,0 +1,74 @@
+<div class="theaters-list-wrapper">
+  <div class="movie-title">Admin: Theater Management</div>
+
+  <!-- Add form -->
+  <form class="add-theater-form" (submit)="onAddTheater(); $event.preventDefault()">
+    <input placeholder="Name" [value]="newTheater().name" (input)="onFieldChange('name', $event)" required>
+    <input placeholder="Location" [value]="newTheater().location" (input)="onFieldChange('location', $event)" required>
+    <input type="number" min="1" placeholder="Capacity" [value]="newTheater().capacity" (input)="onFieldChange('capacity', $event)" required>
+    <button type="submit" class="add-btn">Add Theater</button>
+    <span class="form-error" *ngIf="addError()">{{ addError() }}</span>
+    <span class="form-success" *ngIf="addSuccess()">{{ addSuccess() }}</span>
+  </form>
+
+  <!-- Edit Dialog -->
+  <dialog open *ngIf="showEditDialog()">
+    <form class="dialog-form" (submit)="saveEditTheater(); $event.preventDefault()">
+      <h3>Edit Theater</h3>
+      <input placeholder="Name" [value]="editTheater()?.name" (input)="onEditFieldChange('name', $event)" required>
+      <input placeholder="Location" [value]="editTheater()?.location" (input)="onEditFieldChange('location', $event)" required>
+      <input type="number" placeholder="Capacity" [value]="editTheater()?.capacity" (input)="onEditFieldChange('capacity', $event)" min="1" required>
+      <div class="actions" style="margin-top:1em;">
+        <button class="add-btn" type="submit">Save</button>
+        <button class="delete-btn" type="button" (click)="closeEditDialog()">Cancel</button>
+      </div>
+      <span class="form-error" *ngIf="editError()">{{ editError() }}</span>
+    </form>
+  </dialog>
+
+  <!-- Delete Theater Dialog -->
+  <dialog open *ngIf="showDeleteDialog()">
+    <div style="margin-bottom: 1em;">Are you sure you want to delete this theater?</div>
+    <menu>
+      <button (click)="confirmDeleteTheater()" class="delete-btn">Yes, Delete</button>
+      <button (click)="closeDeleteDialog()" class="edit-btn" style="margin-left:1em;">Cancel</button>
+    </menu>
+  </dialog>
+
+  <div *ngIf="loading()" class="loader">Loading theaters...</div>
+  <div *ngIf="error()" class="error">{{ error() }}</div>
+
+  <div class="theaters-grid">
+    @for (theater of theaters(); track theater.theaterId ?? $index) {
+      <div class="theater-card">
+        <b>{{theater.name}}</b>
+        <div>Location: {{theater.location}}</div>
+        <div>Capacity: {{theater.capacity}}</div>
+        <div>
+          Movie Assigned: 
+          @if(theater.currentMovieId) {
+            <span>&nbsp;{{theater.movieName || '(No Name)'}} <i>({{theater.language}}, {{theater.genre}})</i> [{{theater.currentMovieId}}]</span>
+          } @else {
+            <span class="no-movie">(None)</span>
+          }
+        </div>
+        <div class="actions">
+          <button class="edit-btn" type="button" title="Edit" (click)="openEditDialog(theater)">✏️</button>
+          <button class="delete-btn" type="button" title="Delete" (click)="openDeleteDialog(theater.theaterId!)">🗑️</button>
+        </div>
+        <div class="assign-movie-section">
+          <input
+            type="number"
+            min="1"
+            [value]="assignTheaterId() === theater.theaterId ? assignMovieId() || '' : ''"
+            (input)="onAssignInput($event, theater.theaterId!)"
+          />
+          <button class="assign-movie-btn" type="button" (click)="assignMovie(theater.theaterId!)">
+            Assign Movie
+          </button>
+          <span class="form-error" *ngIf="assignError() && assignTheaterId() === theater.theaterId">{{ assignError() }}</span>
+        </div>
+      </div>
+    }
+  </div>
+</div>
